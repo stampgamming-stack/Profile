@@ -4,12 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>STAMP</title>
-    <meta name="description" content="Personal Introduction | INFP 5w4">
+    <title>STAMP — Portfolio</title>
+    <meta name="description" content="Personal Introduction | INFP 5w4 | Web Developer">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@200;300;400;500&family=Sarabun:wght@200;300;400;500&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@200;300;400;500&family=Sarabun:wght@200;300;400;500&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -26,6 +26,14 @@
         <div class="line line-2"></div>
         <div class="line line-3"></div>
         <div class="line line-4"></div>
+    </div>
+
+    <!-- Fog/Mist Background -->
+    <div class="fog-container" id="fogContainer">
+        <div class="fog-layer fog-1"></div>
+        <div class="fog-layer fog-2"></div>
+        <div class="fog-layer fog-3"></div>
+        <div class="fog-layer fog-4"></div>
     </div>
 
     <!-- Navigation -->
@@ -54,13 +62,13 @@
             <!-- Right: Text Content -->
             <div class="hero-text-side">
                 <div class="text-content">
-                    <p class="intro-label reveal-item">— Introduction</p>
+                    <p class="intro-label reveal-item">Introduction</p>
                     <h1 class="hero-name reveal-item">STAMP</h1>
                     <div class="hero-tagline reveal-item">
                         <span class="tagline-item">INFP</span>
-                        <span class="tagline-divider">•</span>
+                        <span class="tagline-divider">◆</span>
                         <span class="tagline-item">5w4</span>
-                        <span class="tagline-divider">•</span>
+                        <span class="tagline-divider">◆</span>
                         <span class="tagline-item">Dreamer</span>
                     </div>
 
@@ -85,15 +93,15 @@
 
                     <div class="hero-interests reveal-item">
                         <div class="interest-item">
-                            <span class="interest-icon">◇</span>
+                            <span class="interest-icon">◆</span>
                             <span>Web Development</span>
                         </div>
                         <div class="interest-item">
-                            <span class="interest-icon">◇</span>
+                            <span class="interest-icon">◆</span>
                             <span>Design</span>
                         </div>
                         <div class="interest-item">
-                            <span class="interest-icon">◇</span>
+                            <span class="interest-icon">◆</span>
                             <span>JavaScript</span>
                         </div>
                     </div>
@@ -105,12 +113,14 @@
                 </div>
             </div>
         </div>
-
-        <div class="scroll-hint">
-            <div class="scroll-line"></div>
-            <span>Scroll</span>
-        </div>
     </section>
+
+    <!-- Ornamental Divider -->
+    <div class="ornament-divider reveal-item">
+        <div class="ornament-line"></div>
+        <div class="ornament-diamond"></div>
+        <div class="ornament-line"></div>
+    </div>
 
     <!-- Quote Divider -->
     <section class="quote-section">
@@ -123,11 +133,18 @@
         </div>
     </section>
 
+    <!-- Ornamental Divider -->
+    <div class="ornament-divider reveal-item">
+        <div class="ornament-line"></div>
+        <div class="ornament-diamond"></div>
+        <div class="ornament-line"></div>
+    </div>
+
     <!-- Connect Section -->
     <section class="connect-section" id="connect">
         <div class="section-container">
             <div class="section-header">
-                <p class="section-label reveal-item">— Connect</p>
+                <p class="section-label reveal-item">— Connect —</p>
                 <h2 class="section-title reveal-item">Get in Touch</h2>
             </div>
 
@@ -193,6 +210,59 @@
             <p class="footer-year">© 2568</p>
         </div>
     </footer>
+
+    <!-- Luxury Music Player -->
+    <!-- ปุ่มย่อ/ขยาย Player (แสดงเมื่อย่อ Player แล้ว) -->
+    <button class="music-collapse-btn" id="musicCollapseBtn" aria-label="Toggle Player">
+        <svg class="collapse-icon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z" />
+        </svg>
+    </button>
+
+    <div class="music-player" id="musicPlayer">
+        <!-- ปุ่มย่อ (มุมบนขวา เหมือนปุ่มย่อหน้าต่าง) -->
+        <button class="music-minimize-btn" id="musicMinimizeBtn" aria-label="Minimize Player">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M19 13H5v-2h14v2z" />
+            </svg>
+        </button>
+
+        <!-- แถวบน: ปุ่มเล่น + แถบเสียง + ชื่อเพลง -->
+        <div class="music-row music-row-top">
+            <button class="music-toggle" id="musicToggle" aria-label="Toggle Music">
+                <svg class="music-icon music-icon-play" id="iconPlay" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M8 5v14l11-7z" />
+                </svg>
+                <svg class="music-icon music-icon-pause" id="iconPause" viewBox="0 0 24 24" fill="currentColor"
+                    style="display:none;">
+                    <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
+                </svg>
+            </button>
+            <div class="music-bars" id="musicBars">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <span class="music-title" id="musicTitle">Music</span>
+        </div>
+
+        <!-- แถวล่าง: หลอดปรับเสียง + หลอดปรับท่อนเพลง -->
+        <div class="music-row music-row-bottom">
+            <div class="slider-group">
+                <svg class="slider-label-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z" />
+                </svg>
+                <input type="range" class="player-slider volume-slider" id="volumeSlider" min="0" max="100" value="30">
+            </div>
+            <div class="slider-group">
+                <span class="time-display" id="timeDisplay">0:00</span>
+                <input type="range" class="player-slider progress-slider" id="progressSlider" min="0" max="100"
+                    value="0">
+                <span class="time-display" id="durationDisplay">0:00</span>
+            </div>
+        </div>
+    </div>
 
     <!-- Cursor Follower -->
     <div class="cursor-follower" id="cursor"></div>
